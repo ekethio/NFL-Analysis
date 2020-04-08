@@ -7,4 +7,4 @@ In this Repo I will try to accomplish the following objectives.
   be used to generate + Expected value bets against the spread or the over-under. This will be under the 'Data-analysis' folder. 
   3) Develop algorithms to predict the probablity of the home team winning, Giand then convert that to a spread, and see if that would have
   resulted in profits in the past. This will be done under 'Models'. 
-  ![Image of teasers] [https://github.com/ekethio/NFL-Analysis/blob/master/Teasers/Figure_1.png]
+  ![Image of teasers](https://github.com/ekethio/NFL-Analysis/blob/master/Teasers/Figure_1.png)
