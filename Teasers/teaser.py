@@ -27,10 +27,13 @@ cols_include = ['score_home', 'score_away', 'home_favorite', 'schedule_season',\
                 'over_under_result','score_difference', 'favorite_covered', 'home_wins']
 df = df[cols_include]
 df = df[df.over_under_line.notna()]
+
 df['spread_result'] = df.apply(lambda row: row.score_home - row.score_away if not row.home_favorite \
                                else row.score_away - row.score_home , axis =1)
 df['spread_home'] = df.apply(lambda row: row.spread_favorite if row.home_favorite \
                              else -row.spread_favorite, axis =1 )
+
+df['total_range' ] =pd.qcut(df.over_under_line, 2, labels = ['low',  'high'])
 reg_df = df[(df.schedule_season > 2000) & (df.schedule_week < 18)]
 reg_df.drop(['schedule_season', 'schedule_week'], axis =1 , inplace = True )
 
@@ -49,7 +52,7 @@ reg_df.loc[reg_df.spread_result == reg_df.favorite_teaser, 'favorite_teaser_cove
 # Function to calculate the ROI of teased lines (assuming -110 american odds for two teaser legs)
 def ROI(scores):
     ev = []
-    for i in range (10000):
+    for i in range (5000):
         outcomes = np.random.choice(scores, 2)    
         if outcomes[0] == 1 and outcomes[1] ==1:
             ev.append(1)
@@ -59,23 +62,30 @@ def ROI(scores):
             
 
 # Create teaser tables with teased lines as index and their respective ROI and sample size as columns
-favorite_teaser = reg_df.pivot_table(values = 'favorite_teaser_cover', index = 'favorite_teaser', aggfunc =[ ROI, len])  
-underdog_teaser =reg_df.pivot_table(values = 'underdog_teaser_cover', index = 'underdog_teaser', aggfunc =[ ROI, len])   
-favorite_teaser.columns = favorite_teaser.columns.get_level_values(0)
-underdog_teaser.columns = underdog_teaser.columns.get_level_values(0)
+favorite_teaser = reg_df.pivot_table(values = 'favorite_teaser_cover', index = ['favorite_teaser'], columns= 
+                                                                                'total_range', aggfunc =[ ROI, len])  
+underdog_teaser =reg_df.pivot_table(values = 'underdog_teaser_cover', index = ['underdog_teaser'],  columns = 'total_range',\
+                                                                               aggfunc =[ ROI, len])   
+#favorite_teaser.columns = favorite_teaser.columns.get_level_values(0)
+#underdog_teaser.columns = underdog_teaser.columns.get_level_values(0)
  
-# Keep only the relevant teased it lines 
-favorite_teaser = favorite_teaser[(favorite_teaser.index < 5) & (favorite_teaser.index > -4)]
-underdog_teaser = underdog_teaser[(underdog_teaser.index < 12)]
-underdog_teaser['ROI'] = underdog_teaser.ROI.apply(lambda x: str(np.round(x *100, 2)) + '%' )
-favorite_teaser['ROI'] = favorite_teaser.ROI.apply(lambda x: str(np.round(x*100, 2)) + '%')
+
+for teaser in [favorite_teaser, underdog_teaser]: 
+
+    teaser.drop(teaser[(teaser.ROI.low <= -0.2) | (teaser.ROI.high <= -0.2) |(teaser.len.low <= 30)\
+                       | teaser.ROI.low.isna() | teaser.ROI.high.isna()].index, inplace = True)
+    low = teaser.ROI.low.apply(lambda x:  str(np.round(x *100, 2)) + '%' )
+    high = teaser.ROI.high.apply(lambda x: str(np.round(x *100, 2)) + '%' )
+    teaser.rename(columns= {'len': 'sample'}, inplace= True)
+    teaser['ROI'] = np.transpose(np.array([low, high]))
+
 
 print (favorite_teaser)
 print (underdog_teaser)
 
-ax =sns.barplot(underdog_teaser.index, underdog_teaser.ROI.apply(lambda x: float(x.split('%')[0])))
+ax =sns.catplot(underdog_teaser.index, underdog_teaser.ROI, hue = 'total_range')
 ax.set_title('Underdog Teasers ROI')
 ax.set_ylim (-30, 20)
 ax.set_ylabel('ROI in %')
-ax.set_xlabel('Teased up to')
+ax.sexlabel('Teased up to')
 
