@@ -64,7 +64,7 @@ underdog_teaser =reg_df.pivot_table(values = 'underdog_teaser_cover', index = 'u
 favorite_teaser.columns = favorite_teaser.columns.get_level_values(0)
 underdog_teaser.columns = underdog_teaser.columns.get_level_values(0)
  
-# Keep only the relevant teased lines 
+# Keep only the relevant teased it lines 
 favorite_teaser = favorite_teaser[(favorite_teaser.index < 5) & (favorite_teaser.index > -4)]
 underdog_teaser = underdog_teaser[(underdog_teaser.index < 12)]
 underdog_teaser['ROI'] = underdog_teaser.ROI.apply(lambda x: str(np.round(x *100, 2)) + '%' )

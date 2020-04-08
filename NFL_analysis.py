@@ -16,9 +16,11 @@ import seaborn as sns
 
 data = pd.read_csv("nfl_betting_df.csv")
 data = data[data.schedule_season > 1978]
+
 data['total_ppg'] = data.h_ppg + data.a_ppg
 data['total_papg'] = data.h_papg + data.a_papg 
 data['score_diff'] = data.score_home - data.score_away
+data = data.loc[:, ['spread_favorite', 'home_favorite', 'score_diff']]
 
 reg_data = data[(data.schedule_week > 1) & (data.schedule_week < 18)& (data.schedule_season > 2000)]
 week5_data = data[(data.schedule_week > 5) & (data.schedule_week < 18) & (data.schedule_season > 2000)]
