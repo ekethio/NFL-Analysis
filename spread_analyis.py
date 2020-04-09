@@ -27,7 +27,7 @@ df = df[df.over_under_line.notna()][['spread_favorite', 'spread_result', 'total_
 
 df = df[df.schedule_season > 2001]
 df['high_total'] = df.over_under_line > 43
-sns.set(font_scale= 1.7)
+sns.set(font_scale= 1.4)
 sns.pairplot(df, hue = 'high_total')
 
 
