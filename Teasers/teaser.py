@@ -83,8 +83,7 @@ for teaser in [favorite_teaser, underdog_teaser]:
 print (favorite_teaser)
 print (underdog_teaser)
 
-ax =sns.catplot(underdog_teaser.index, underdog_teaser.ROI, hue = 'total_range')
-ax.set_title('Underdog Teasers ROI')
+ax.set_title('favorite_Teasers ROI')
 ax.set_ylim (-30, 20)
 ax.set_ylabel('ROI in %')
 ax.sexlabel('Teased up to')

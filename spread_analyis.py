@@ -27,6 +27,9 @@ df = df[df.over_under_line.notna()][['spread_favorite', 'spread_result', 'total_
 
 df = df[df.schedule_season > 2001]
 df['high_total'] = df.over_under_line > 43
+sns.set(font_scale= 2)
+sns.pairplot(df, hue = 'high_total')
+
 
 seasonal_ou = df.pivot_table(values = ['over_under_line', 'total_score'], index = 'schedule_season', aggfunc = [np.mean, np.median, max, min])
 #seasonal_ou.columns = seasonal_ou.columns.get_level_values(0)
@@ -49,5 +52,5 @@ close_dist = close_dist[(close_dist.index > -7.5) & (close_dist.index < 7.5)]
 #print (df.over_under_line.value_counts().iloc[:30])
 #sns.regplot(df.total_score, df.spread_favorite)
 
-sns.distplot(df.total_score)
+#sns.distplot(df.total_score)
 
