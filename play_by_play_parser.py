@@ -38,7 +38,7 @@ col_mapper = { 'game_date' : 'date', 'quarter_seconds_remaining': 'time', 'yards
     
 df.columns = df.columns.map(lambda x: col_mapper[x] if x in col_mapper else x )
 df['season'] = df.date.map(lambda x: x.split('-')[0])
-df = df.assign(play = 1)
+
 # Fix team names 
 team_names = ['posteam', 'defteam', 'away_team', 'home_team']
 for name in team_names:
@@ -49,16 +49,6 @@ df.to_csv('data/pbp_cleaned.csv')
 
 
 
-play_types = ['pass', 'run', 'punt']
-df = df[(df.play_type.isin(play_types))]
-qb_stats=  df[df.ispass ==1].groupby(by = 'passer').sum()[['interception', 'passtd', 'yards', 'play']]
-qb = qb_stats[qb_stats.passtd > 60]
-qb['ypp'] = qb.yards/ qb.play
-qb['td_int_ratio'] = qb.passtd/ qb.interception 
-qb.columns = qb.columns.map(lambda x: x.upper())
 
-
-print (qb.sort_values (by = 'YPP', ascending = False))
-print (df.groupby(by = ['posteam']).mean()[['shotgun', 'ispass']].rename(columns = (lambda x: x.upper())))
 
 
