@@ -45,7 +45,7 @@ for name in team_names:
     pos_team_mapper = {'LA' : 'LAR', 'STL' :"LAR", 'SD': 'LAC', 'JAX': "JAC"}
     df[name] = df[name].map(lambda x: pos_team_mapper[x] if x in pos_team_mapper else x)
     
-df.to_csv('pbp_cleaned.csv')
+df.to_csv('data/pbp_cleaned.csv')
 
 
 
