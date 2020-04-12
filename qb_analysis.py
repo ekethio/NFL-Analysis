@@ -13,13 +13,17 @@ import numpy as np
 path ="data/pbp_cleaned.csv"
 df = pd.read_csv(path)
 
-play_types = ['pass', 'run', 'punt']
-df = df[(df.play_type.isin(play_types))]
+play_types = ['pass', 'run']
+df = df[df.play_type.isin(play_types)]
 
-qb_stats=  df[df.ispass ==1].groupby(by = 'passer').sum()[['interception', 'passtd', 'yards', 'play']]
-qb = qb_stats[qb_stats.passtd > 60]
-qb['ypp'] = qb.yards/ qb.play
-qb['td_int_ratio'] = qb.passtd/ qb.interception 
+qb_stats=  df[df.ispass ==1].groupby(by = 'passer').sum()\
+          [['interception', 'passtd', 'yards', 'play', 'sack']]
+qb = qb_stats[qb_stats.play > 4000]
+qb = qb.assign(ypp = lambda qb : qb.yards/qb.play, \
+               spp = lambda qb : qb.sack/qb.play,
+               intpp = lambda qb : qb.interception/qb.play,\
+               td_int_ratio = lambda qb: qb.passtd/qb.interception)
+
 qb.columns = qb.columns.map(lambda x: x.upper())
 
 
