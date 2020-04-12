@@ -10,5 +10,5 @@ In this Repo I will try to accomplish the following objectives.
   ![Image of teasers](https://github.com/ekethio/NFL-Analysis/blob/master/Images/Relationships.png)
   
   
-  This is a correlation graph of different team defensive metrics. 
+  This is a correlation graph of different team defensive metrics. \n
   ![Image of Defense](https://github.com/ekethio/NFL-Analysis/blob/master/Images/defense.png)
