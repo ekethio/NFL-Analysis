@@ -8,7 +8,7 @@ In this Repo I will try to accomplish the following objectives.
   3) Develop algorithms to predict the probablity of the home team winning, and then convert that to a spread, and see if that would have
   resulted in profits in the past. This will be done under 'Models'. 
   ![Image of teasers](https://github.com/ekethio/NFL-Analysis/blob/master/Images/Relationships.png)
-  \n
   
-  This is a correlation graph of different team defensive metrics. \n
+  
+  This is a correlation graph of different team defensive metrics, the correlation map shows the differt effects of various aspects of defense. 
   ![Image of Defense](https://github.com/ekethio/NFL-Analysis/blob/master/Images/defense.png)
