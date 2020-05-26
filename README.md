@@ -49,8 +49,7 @@ Possible features that determine the strength of a team:<br/>
 		  <li>points allowed per drive/game.</li>
 		  <li>Percentage of plays allowed that are successful. </li>
 		  <li>Explosive plays allowed.</li>
-		  <li>Efficiency on high leveraged plays. </li>
-			
+		  <li>Efficiency on high leveraged plays. </li>	
 	      	  <li>First half, and 4th quarter splits (to account for endurance.)</li>
 		  <li>Amount of constant pressure put on QB. </li>
 		  <li>Frequency of pushing opponent to high leveraged plays.</li>
