@@ -1,10 +1,10 @@
 NFL Predictive Model
 
-Possible features that determine the strength of a team:<br/>
+Possible features that determine the strength of a team:<br/></tab
 (Note: Each sub-list includes factors in decreasing value of importance.)<br/>
 	A) Offense:<br/>
 	  Individual components of the offense:<br/>
-		  -Quarterback's efficiency.<br/>
+                      -Quarterback's efficiency.<br/>
 		  -Offensive play calling.<br/>
 		  -Offensive line (Pass and Run block)<br/>
 		  -Skill position players. <br/>
