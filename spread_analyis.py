@@ -35,7 +35,7 @@ seasonal_ou = df.pivot_table(values = ['over_under_line', 'total_score'], index 
 #seasonal_ou.columns = seasonal_ou.columns.get_level_values(0)
 # Close games probablity distrubtion 
 
-
+p
 df['total_range' ] =pd.qcut(df.over_under_line, 4, labels = ['low', 'low_mid', 'high_mid', 'high'])
 near_three = df[df.spread_favorite > -5]
 
