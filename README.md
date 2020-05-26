@@ -27,7 +27,7 @@ Possible features that determine the strength of a team:<br/>
 		  <li>Penalties that changed the outcome of a play.</li>
 		  <li>Unsustainable bad/good luck on high leveraged plays. </li>
 			</ul>
-	  <li>Ways to account for offensive output that is driven by game script:<li/>
+	  <li>Ways to account for offensive output that is driven by game script:</li>
 		<ul>
 		  <li>Discounting garbage time performance(including when trailing signficantly).</li>
 		  <li>Discounting end of half/game plays, hail marys,  or any inconsequential plays </li>
@@ -59,7 +59,7 @@ Possible features that determine the strength of a team:<br/>
 		  <li>Interceptions, or explosive plays allowed. </li>
 		  <li>Penalities that changed the outcome of a play. </li>
 		  <li>Unsustainable good luck on high-leveraged plays. </li>
-		 </ul
+			</ul>
 		<li>Ways to account from defensive performance driven by game sript:</li>
 		<ul>
 		  <li>Discounting garbage time performance(indluing ahead or trailing by significanly).</li>
