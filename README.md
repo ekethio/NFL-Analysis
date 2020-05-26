@@ -61,9 +61,11 @@ Possible features that determine the strength of a team:<br/>
 		  <li>Unsustainable good luck on high-leveraged plays. </li>
 		 </ul
 		<li>Ways to account from defensive performance driven by game sript:</li>
+		<ul>
 		  <li>Discounting garbage time performance(indluing ahead or trailing by significanly).</li>
 		  <li>Discounting end of half/game, or other plays that aren't significant to the </li>
-		   outocme of the footbale game. 
+		   outocme of the footbale game.
+			</ul>
 	</ol>	   
 		  
 			
