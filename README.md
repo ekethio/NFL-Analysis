@@ -1,4 +1,8 @@
-NFL Predictive Model
+
+
+
+
+<h2> NFL Predictive Model </h2>
 
 Possible features that determine the strength of a team:<br/>
 (Note: Each sub-list includes factors in decreasing value of importance.)<br/>
